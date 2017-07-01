@@ -26,6 +26,11 @@ test('arrayToString makes an string out of an array', t => {
 test('createBoard returns an array', t => {
   const result = funcs.createBoard(20, 20, '123', '345', 80)
   t.true(Array.isArray(result), 'array returned')
+  const mines = result.reduce((mines, square) => {
+    if (square.mine === 'X') return mines + 1
+    return mines
+  }, 0)
+  t.is(mines, 80, 'correct number of mines')
 })
 
 test('getNumber returns a string', t => {

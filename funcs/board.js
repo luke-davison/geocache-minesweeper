@@ -21,7 +21,7 @@ function createBoard (width, height, east, south, mines) {
     width,
     height,
     squares: [],
-    mines: 0
+    mine: 0
   }
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
@@ -33,7 +33,7 @@ function createBoard (width, height, east, south, mines) {
   addNums(board, east, eastSpacings, verticalSpacings[0])
   const southSpacings = createSpacings(3, width - south.length * numWidth)
   addNums(board, south, southSpacings, verticalSpacings[0] + verticalSpacings[1] + numHeight)
-  addRandomMines(board)
+  addRandomMines(board, mines)
   addRemainingSquares(board)
   return board.squares
 }
@@ -61,7 +61,6 @@ function addNums (board, nums, spacings, top) {
     addNum(board, left, top, num)
     return left
   }, 0)
-  return board
 }
 
 function addNum (board, x, y, num) {
@@ -81,7 +80,6 @@ function addNum (board, x, y, num) {
       square.mine = 'O'
     }
   })
-  return board
 }
 
 function getNumber (num) {
@@ -100,16 +98,22 @@ function getNumber (num) {
   }
 }
 
-function addRandomMines (board) {
-  // in progress
-  return board
+function addRandomMines (board, mines) {
+  while (board.mines < mines) {
+    let r = Math.floor(Math.random() * board.squares.length + 1)
+    if (!board.squares[r].mine) {
+      board.squares[r].mine = 'X'
+      board.mines++
+    }
+  }
 }
 
 function addRemainingSquares (board) {
   board.squares.forEach(square => {
-    if (!square.mine) square.mine = 'O'
+    if (!square.mine) {
+      square.mine = 'O'
+    }
   })
-  return board
 }
 
 module.exports = {
