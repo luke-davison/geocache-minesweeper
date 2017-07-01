@@ -23,6 +23,11 @@ test('arrayToString makes an string out of an array', t => {
   t.is(actual, expected, 'string returned')
 })
 
+test('createBoard returns an array', t => {
+  const result = funcs.createBoard(20, 20, '123', '345', 80)
+  t.true(Array.isArray(result), 'array returned')
+})
+
 test('getNumber returns a string', t => {
   const expected = 'string'
   const actual = typeof funcs.getNumber('2')
