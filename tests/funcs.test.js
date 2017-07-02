@@ -44,3 +44,21 @@ test('getNumber returns a 15 character string', t => {
   const actual = funcs.getNumber('0').length
   t.is(actual, expected, 'string of length 15 returned')
 })
+
+test('create spacings returns an array', t => {
+  const result = funcs.createSpacings(2, 10)
+  t.true(Array.isArray(result), 'array returned')
+})
+
+test('create spacings returns an array of correct length', t => {
+  const expected = 5
+  const actual = funcs.createSpacings(4, 10).length
+  t.is(actual, expected, 'array of correct length returned')
+})
+
+test('create spacings returns an array containing correct number of spaces', t => {
+  const result = funcs.createSpacings(2, 10)
+  const expected = 10
+  const actual = result[0] + result[1] + result[2]
+  t.is(actual, expected, 'array contains correct number of spaces')
+})
