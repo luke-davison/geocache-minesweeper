@@ -3,22 +3,22 @@ const test = require('ava')
 const funcs = require('../funcs/board.js')
 
 test('stringToArray makes an array out of a string', t => {
-  const str = 'OXO'
-  const expected = [{x: 0, y: 0, mine: 'O'}, {x: 1, y: 0, mine: 'X'}, {x: 2, y: 0, mine: 'O'}]
+  const str = '0X0'
+  const expected = [{x: 0, y: 0, mine: '0'}, {x: 1, y: 0, mine: 'X'}, {x: 2, y: 0, mine: '0'}]
   const actual = funcs.stringToArray(str, 20, 20)
   t.deepEqual(actual, expected, 'array returned')
 })
 
 test('stringToArray makes an array out of a string when the string length is longer than the board width', t => {
-  const str = 'XOXO'
-  const expected = [{x: 0, y: 0, mine: 'X'}, {x: 1, y: 0, mine: 'O'}, {x: 0, y: 1, mine: 'X'}, {x: 1, y: 1, mine: 'O'}]
+  const str = 'X0X0'
+  const expected = [{x: 0, y: 0, mine: 'X'}, {x: 1, y: 0, mine: '0'}, {x: 0, y: 1, mine: 'X'}, {x: 1, y: 1, mine: '0'}]
   const actual = funcs.stringToArray(str, 2, 2)
   t.deepEqual(actual, expected, 'array returned')
 })
 
 test('arrayToString makes an string out of an array', t => {
-  const arr = [{x: 0, y: 0, mine: 'X'}, {x: 1, y: 0, mine: 'X'}, {x: 2, y: 0, mine: 'O'}]
-  const expected = 'XXO'
+  const arr = [{x: 0, y: 0, mine: 'X'}, {x: 1, y: 0, mine: 'X'}, {x: 2, y: 0, mine: '0'}]
+  const expected = 'XX0'
   const actual = funcs.arrayToString(arr)
   t.is(actual, expected, 'string returned')
 })
