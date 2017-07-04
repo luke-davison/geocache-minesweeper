@@ -1,5 +1,6 @@
 {
   "name": "geocache-minesweeper",
+  "version": "0.1.2",
   "description": "Server to host a minesweeper game that will reveal a geocache coordinates",
   "main": "index.js",
   "scripts": {
