@@ -1,0 +1,65 @@
+.square {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  font-weight: bold;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-text {
+  color: white;
+  text-align: center;
+}
+
+#board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.mine0 {
+  background-color: white;
+}
+
+.mine1 {
+  background-color: #00D26E;
+}
+
+.mine2 {
+  background-color: #00CDD8;
+}
+
+.mine3 {
+  background-color: #005EDF;
+}
+
+.mine4 {
+  background-color: #1600E5;
+}
+
+.mine5 {
+  background-color: #9300EF;
+}
+
+.mine6 {
+  background-color: #F200CD;
+}
+
+.mine7 {
+  background-color: #F80050;
+}
+
+.mine8 {
+  background-color: #FF3200;
+}
+
+.mineX {
+  background-color: red;
+}
+
+.mine {
+  background-color: #404040;
+}
