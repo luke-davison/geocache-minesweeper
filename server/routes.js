@@ -4,6 +4,7 @@ var router = express.Router()
 var submitMove = require('./db')
 
 router.post('/submit', function (req, res) {
+  console.log(req.body)
   return submitMove(Number(req.body.x), Number(req.body.y), Number(req.body.id), req.app.get('knex'))
     .then(result => res.send(result))
     .catch(err => res.status(500).send('Error: ' + err.message))

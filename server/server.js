@@ -12,7 +12,7 @@ const server = express()
 server.set('knex', knex)
 
 // Middleware
-server.use(bodyParser.urlencoded({ extended: false }))
+server.use(bodyParser.json())
 
 // Routes
 server.use(express.static('public'))

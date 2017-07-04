@@ -161,7 +161,12 @@ function checkMove (x, y, board) {
     }
     i++
   }
-  return {results}
+  return {
+    results,
+    id: board.id,
+    width: board.width,
+    height: board.height
+  }
 }
 
 function isNearby (x1, y1, x2, y2) {
