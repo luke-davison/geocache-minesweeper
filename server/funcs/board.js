@@ -37,7 +37,6 @@ function createBoard (width, height, east, south, mines) {
   addRandomMines(board, mines)
   addRemainingSquares(board)
   addNearbyNumbers(board)
-  drawBoard(board)
   return board
 }
 

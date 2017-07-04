@@ -2,12 +2,11 @@ const funcs = require('./funcs/board')
 
 const width = 20
 const height = 20
-const south = '123'
-const east = '456'
-const mines = 90
+const south = String(process.env.south)
+const east = String(process.env.east)
+const mines = Number(process.env.mines)
 
 function submitMove (x, y, id, knex) {
-  console.log('x', x, 'y', y, 'id', id)
   if (!id) {
     return createNewGame(knex)
       .then(getResult)
