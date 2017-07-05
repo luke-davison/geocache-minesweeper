@@ -47,7 +47,6 @@ function leftClick (x, y) {
       resetGame()
     } else {
       if (!squares.find(square => square.x === x && square.y === y)) {
-        console.log('x', x, 'y', y)
         request
           .post('/submit')
           .send({x, y, id: window.localStorage.getItem('id')})
@@ -58,7 +57,6 @@ function leftClick (x, y) {
 }
 
 function infoReceived (err, res) {
-  console.log('err', err, 'res', res.body)
   if (err) {
     error = err.message
     return
