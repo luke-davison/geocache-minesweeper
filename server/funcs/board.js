@@ -59,8 +59,9 @@ function createSpacings (digits, spaces) {
 
 function addNums (board, nums, spacings, top) {
   nums.split('').reduce((spacing, num, i) => {
-    let left = spacing + spacings[i] + numWidth * i
+    let left = spacing + spacings[i]
     addNum(board, left, top, num)
+    left += numWidth
     return left
   }, 0)
 }
