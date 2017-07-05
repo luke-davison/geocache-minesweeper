@@ -36,6 +36,7 @@ function createNewGame (knex) {
   return knex('games')
     .insert(dbBoard)
     .then(id => {
+      console.log('id:', id)
       board.id = id[0]
       return board
     })
