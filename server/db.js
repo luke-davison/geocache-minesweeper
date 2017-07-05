@@ -7,16 +7,22 @@ const east = String(process.env.east)
 const mines = Number(process.env.mines)
 
 function submitMove (x, y, id, knex) {
+  console.log('2 submitMove')
   if (!id) {
+    console.log('3 no id')
     return createNewGame(knex)
       .then(getResult)
   }
+  console.log('3 yes id')
   return getGame(id, knex)
     .then(getResult)
 
   function getResult (game) {
+    console.log('4 game', game)
     const result = funcs.checkMove(x, y, game)
+    console.log('5 result', result)
     if (result.failed) {
+      console.log('6 failed')
       gameFailed(game.id, knex)
     }
     return result
@@ -26,6 +32,7 @@ function submitMove (x, y, id, knex) {
 function createNewGame (knex) {
   const board = funcs.createBoard(width, height, south, east, mines)
   board.failed = false
+  console.log('4 board', board)
   const dbBoard = {
     width: board.width,
     height: board.height,
@@ -33,6 +40,7 @@ function createNewGame (knex) {
     failed: false,
     squares: funcs.arrayToString(board.squares)
   }
+  console.log('5 dbboard', dbBoard)
   return knex('games')
     .insert(dbBoard)
     .then(id => {
