@@ -7,7 +7,7 @@ router.post('/submit', function (req, res) {
   console.log('1 req.body', req.body)
   return submitMove(Number(req.body.x), Number(req.body.y), Number(req.body.id), req.app.get('knex'))
     .then(result => res.send(result))
-    .catch(err => res.status(500).send('Error: ' + err.message))
+    // .catch(err => res.status(500).send('Error: ' + err.message))
 })
 
 module.exports = router
