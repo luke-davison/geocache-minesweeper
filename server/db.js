@@ -24,7 +24,7 @@ function submitMove (x, y, id, knex) {
 }
 
 function createNewGame (knex) {
-  checkDatabaseSize(knex)
+  // checkDatabaseSize(knex)
   const board = funcs.createBoard(width, height, south, east, mines)
   board.failed = false
   const dbBoard = {
@@ -67,7 +67,7 @@ function checkDatabaseSize (knex) {
   knex('games')
     .select()
     .then(games => {
-      if (games.length > 29) {
+      if (games.length > 6500) {
         knex('games')
           .where('id', games[0].id)
           .del()
