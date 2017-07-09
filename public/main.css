@@ -10,7 +10,6 @@
 }
 
 .square-text {
-  color: white;
   text-align: center;
 }
 
@@ -21,39 +20,40 @@
 }
 
 .mine0 {
+  color: white;
   background-color: white;
 }
 
 .mine1 {
-  background-color: #00D26E;
+  background-color: #85FEC5;
 }
 
 .mine2 {
-  background-color: #00CDD8;
+  background-color: #86F7FE;
 }
 
 .mine3 {
-  background-color: #005EDF;
+  background-color: #87B9FE;
 }
 
 .mine4 {
-  background-color: #1600E5;
+  background-color: #9589FE;
 }
 
 .mine5 {
-  background-color: #9300EF;
+  background-color: #D28AFE;
 }
 
 .mine6 {
-  background-color: #F200CD;
+  background-color: #FE8CEC;
 }
 
 .mine7 {
-  background-color: #F80050;
+  background-color: #FE8DB2;
 }
 
 .mine8 {
-  background-color: #FF3200;
+  background-color: #FEA58F;
 }
 
 .mineX {

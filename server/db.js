@@ -24,6 +24,7 @@ function submitMove (x, y, id, knex) {
 }
 
 function createNewGame (knex) {
+  checkDatabaseSize(knex)
   const board = funcs.createBoard(width, height, south, east, mines)
   board.failed = false
   const dbBoard = {
@@ -46,12 +47,13 @@ function getGame (id, knex) {
   return knex('games')
   .where('id', id)
   .select()
-  .then(board => {
+  .then(games => {
+    const board = games[0]
     if (!board) {
       return createNewGame(knex)
     }
-    board[0].squares = funcs.stringToArray(board[0].squares, board[0].width, board[0].height)
-    return board[0]
+    board.squares = funcs.stringToArray(board.squares, board.width, board.height)
+    return board
   })
 }
 
@@ -59,6 +61,19 @@ function gameFailed (id, knex) {
   return knex('games')
     .where('id', id)
     .update('failed', true)
+}
+
+function checkDatabaseSize (knex) {
+  knex('games')
+    .select()
+    .then(games => {
+      if (games.length > 29) {
+        knex('games')
+          .where('id', games[0].id)
+          .del()
+          .then()
+      }
+    })
 }
 
 module.exports = submitMove

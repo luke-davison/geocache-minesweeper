@@ -1,6 +1,6 @@
 const test = require('ava')
 
-const funcs = require('../funcs/board.js')
+const funcs = require('../server/funcs/board.js')
 
 test('stringToArray makes an array out of a string', t => {
   const str = '0X0'
@@ -21,16 +21,6 @@ test('arrayToString makes an string out of an array', t => {
   const expected = 'XX0'
   const actual = funcs.arrayToString(arr)
   t.is(actual, expected, 'string returned')
-})
-
-test('createBoard returns an array', t => {
-  const result = funcs.createBoard(20, 20, '123', '345', 80)
-  t.true(Array.isArray(result), 'array returned')
-  const mines = result.reduce((mines, square) => {
-    if (square.mine === 'X') return mines + 1
-    return mines
-  }, 0)
-  t.is(mines, 80, 'correct number of mines')
 })
 
 test('getNumber returns a string', t => {
