@@ -6,7 +6,6 @@ let error = ''
 let failed = false
 let width = 20
 let height = 20
-let mines = 90
 
 document.addEventListener('DOMContentLoaded', startGame)
 
