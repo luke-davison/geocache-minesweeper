@@ -60,6 +60,7 @@ function infoReceived (err, res) {
     error = err.message
     return
   }
+  
   res.body.results.forEach(newSquare => {
     if (!squares.find(square => square.x === newSquare.x && square.y === newSquare.y)) {
       squares.unshift(newSquare)
