@@ -97,7 +97,6 @@ let error = '';
 let failed = false;
 let width = 20;
 let height = 20;
-let mines = 90;
 
 document.addEventListener('DOMContentLoaded', startGame);
 
@@ -149,6 +148,7 @@ function infoReceived(err, res) {
     error = err.message;
     return;
   }
+
   res.body.results.forEach(newSquare => {
     if (!squares.find(square => square.x === newSquare.x && square.y === newSquare.y)) {
       squares.unshift(newSquare);
@@ -158,7 +158,6 @@ function infoReceived(err, res) {
     failed = true;
     window.localStorage.removeItem('id');
   } else {
-    console.log('failed');
     if (res.body.id !== window.localStorage.getItem('id')) {
       resetGame();
     }
