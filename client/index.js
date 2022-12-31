@@ -70,7 +70,8 @@ function infoReceived (err, res) {
     failed = true
     window.localStorage.removeItem('id')
   } else {
-    if (res.body.id !== window.localStorage.getItem('id')) {
+    const id = window.localStorage.getItem('id')
+    if (id && res.body.id !== id) {
       resetGame()
     }
     window.localStorage.setItem('id', res.body.id)

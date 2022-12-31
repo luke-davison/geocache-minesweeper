@@ -7,7 +7,6 @@ const east = String(process.env.east || "456")
 const mines = 88
 
 const fakeDatabase = new Map();
-console.log("fakeDatabase.size", fakeDatabase.size)
 
 function submitMove (x, y, id) {
   if (!id) {
@@ -48,11 +47,8 @@ function createNewGame () {
 }
 
 function getGame (id) {
-  console.log(id, typeof id)
-  console.log("fakeDatabase.size", fakeDatabase.size, Array.from(fakeDatabase))
   const board = fakeDatabase.get(id)
   if (!board) {
-    console.log('no board')
     return createNewGame()
   }
 
@@ -67,7 +63,6 @@ function getGame (id) {
 }
 
 function gameFailed (id) {
-  console.log('deleting', id)
   fakeDatabase.delete(id)
 }
 
